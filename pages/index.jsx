@@ -1,4 +1,6 @@
+import ArticlesCard from '@/components/articlesCard'
 import Header from '@/components/header/index'
+import Advert from './index/advert'
 import CarouselBanner from './index/carouselBanner'
 
 export default function Index() {
@@ -13,6 +15,20 @@ export default function Index() {
         </div>
         <div className="carousel-banner">
           <CarouselBanner />
+        </div>
+        <div className="main">
+          <div className="article-card">
+            <ArticlesCard>
+              <div>123</div>
+              <div>456</div>
+              <div>678</div>
+            </ArticlesCard>
+          </div>
+          <div className="other-info">
+            <div className="advert">
+              <Advert />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -32,10 +48,27 @@ export default function Index() {
           left: 0;
           top: 0;
         }
-        .carousel-banner{
-          padding-top:184px
+        .carousel-banner {
+          padding-top: 184px;
+        }
+        .main {
+          display: flex;
+          margin-top: 40px;
 
         }
+        .article-card {
+          margin-right: 20px;
+          width: 900px;
+        }
+        .other-info {
+          overflow: hidden;
+          flex:1
+        }
+        .advert{
+          width:100%;
+          height:338px
+        }
+        
       `}</style>
     </>
   )
