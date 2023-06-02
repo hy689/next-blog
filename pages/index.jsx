@@ -4,6 +4,10 @@ import Advert from './index/advert'
 import CarouselBanner from './index/carouselBanner'
 
 export default function Index() {
+  const title = (<>
+    <i style={{color:'#3e8bf8',marginRight:'10px'}} className="iconfont icon-jianzhu"></i>
+    <h3 style={{display:'inline-block'}}>推荐文章</h3>
+  </>)
   return (
     <>
       <div className="index-container">
@@ -18,7 +22,7 @@ export default function Index() {
         </div>
         <div className="main">
           <div className="article-card">
-            <ArticlesCard>
+            <ArticlesCard title={title}>
               <div>123</div>
               <div>456</div>
               <div>678</div>

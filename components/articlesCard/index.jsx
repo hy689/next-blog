@@ -2,8 +2,12 @@ export default function ArticlesCard(options) {
   console.log(options)
   return (
     <>
-      <div className="card-header"></div>
-      <div className="card-content">123</div>
+      <div className="card-header">
+        {options.title}
+      </div>
+      <div className="card-content">
+        {options.children}
+      </div>
       <style jsx>{`
         .card-header {
           padding: 24px;
