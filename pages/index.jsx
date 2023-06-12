@@ -1,4 +1,5 @@
 import ArticlesCard from '@/components/articlesCard'
+import ArticlesItem from '@/components/articlesItem'
 import Header from '@/components/header/index'
 import Advert from './index/advert'
 import CarouselBanner from './index/carouselBanner'
@@ -23,9 +24,10 @@ export default function Index() {
         <div className="main">
           <div className="article-card">
             <ArticlesCard title={title}>
-              <div>123</div>
-              <div>456</div>
-              <div>678</div>
+              <ArticlesItem style={{padding: '20px', marginBottom: '10px'}}/>
+              <ArticlesItem style={{padding: '20px', marginBottom: '10px'}}/>
+              <ArticlesItem style={{padding: '20px', marginBottom: '10px'}}/>
+
             </ArticlesCard>
           </div>
           <div className="other-info">

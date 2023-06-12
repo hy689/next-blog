@@ -4,9 +4,7 @@ const contentStyle = {
   background: '#364d79',
 }
 export default function CarouselBanner(options) {
-  const onChange = (currentSlide) => {
-    console.log(currentSlide)
-  }
+
   return (
     <>
       <div className="carousel-banner">
