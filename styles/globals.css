@@ -1,5 +1,4 @@
 :root {
-  --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
@@ -26,6 +25,35 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --g-text-hover-color: #fff;
+    --g-text-color: #fff;
+    --g-footer-text-color: #777;
+    --g-input-bg-color: #efefef;
+    --g-footer-bg-color: #000;
+    --g-footer-logo-text-color: #40a9ff;
+    --g-primary-color: #1ab6ff;
+    --g-primary-image: linear-gradient(-84deg,#1ab6ff,#1ab6ff 0,#028fff);
+    --login-modal-bg-color: #fff;
+    --home-header-color: #fff;
+    --list-img-bg-color: #f0f5f9;
+    --option-hover-color: #e6f7ff;
+    --comment-bg-color: #fff;
+    --bg-comment-editor-color: #f5f7fa6b;
+    --bg-reply-comment-color: #f5f7fa;
+    --comment-editor-input-color: #f5f7fa;
+    --bg-article-item-disabled-color: #f0f5f9;
+    --bg-article-item-frozen-color: #fdc9cc;
+    --primary-color: #1ab6ff;
+    --secondary-color: #40a9ff;
+    --bg-color: #fff;
+    --bg-color-deep: #f4f7fa;
+    --bg-color-medium: hsla(0,0%,100%,.04);
+    --bg-color-light: hsla(0,0%,100%,.1);
+    --text-color-deep: #333;
+    --text-color-medium: #666;
+    --text-color-light: #999;
+    --border-color: #fff;
 }
 
 
@@ -40,9 +68,6 @@ html,
 body {
   font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
   letter-spacing: 1px;
-  max-width: 100vw;
-  min-width: 1100px;
-  width: 1200px;
   margin: 0 auto;
   background: #f4f7fa;
 }

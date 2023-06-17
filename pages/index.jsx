@@ -5,16 +5,22 @@ import Advert from './index/advert'
 import CarouselBanner from './index/carouselBanner'
 
 export default function Index() {
-  const title = (<>
-    <i style={{color:'#3e8bf8',marginRight:'10px'}} className="iconfont icon-jianzhu"></i>
-    <h3 style={{display:'inline-block'}}>推荐文章</h3>
-  </>)
+  const title = (
+    <>
+      <i
+        style={{ color: '#3e8bf8', marginRight: '10px' }}
+        className="iconfont icon-jianzhu"
+      ></i>
+      <h3 style={{ display: 'inline-block' }}>推荐文章</h3>
+    </>
+  )
   return (
     <>
-      <div className="index-container">
-        <div className="header">
-          <Header></Header>
-        </div>
+      <Header></Header>
+      <div
+        style={{ width: '1200px', margin: '0 auto' }}
+        className="index-container"
+      >
         <div>
           <img className="banner" src="imgs/headerBg2.png" alt="" />
         </div>
@@ -24,10 +30,9 @@ export default function Index() {
         <div className="main">
           <div className="article-card">
             <ArticlesCard title={title}>
-              <ArticlesItem style={{padding: '20px', marginBottom: '10px'}}/>
-              <ArticlesItem style={{padding: '20px', marginBottom: '10px'}}/>
-              <ArticlesItem style={{padding: '20px', marginBottom: '10px'}}/>
-
+              <ArticlesItem style={{ padding: '20px', marginBottom: '10px' }} />
+              <ArticlesItem style={{ padding: '20px', marginBottom: '10px' }} />
+              <ArticlesItem style={{ padding: '20px', marginBottom: '10px' }} />
             </ArticlesCard>
           </div>
           <div className="other-info">
@@ -40,12 +45,6 @@ export default function Index() {
 
       <style jsx>{`
         .index-container {
-        }
-        .header {
-          position: sticky;
-          top: 0;
-          z-index: 999;
-          width: 100%;
         }
         .banner {
           width: 100vw;
@@ -60,7 +59,6 @@ export default function Index() {
         .main {
           display: flex;
           margin-top: 40px;
-
         }
         .article-card {
           margin-right: 20px;
@@ -68,13 +66,12 @@ export default function Index() {
         }
         .other-info {
           overflow: hidden;
-          flex:1
+          flex: 1;
         }
-        .advert{
-          width:100%;
-          height:338px
+        .advert {
+          width: 100%;
+          height: 338px;
         }
-        
       `}</style>
     </>
   )
