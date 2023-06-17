@@ -1,10 +1,17 @@
+import React, { useState,useEffect } from 'react'
 import ArticlesCard from '@/components/articlesCard'
 import ArticlesItem from '@/components/articlesItem'
 import Header from '@/components/header/index'
 import Advert from './index/advert'
 import CarouselBanner from './index/carouselBanner'
+import { apiArticleGetAll } from '@/api/articles'
 
 export default function Index() {
+  const getArticles = async () => {
+    const res = await apiArticleGetAll()
+    setArticles(res.data)
+  }
+
   const title = (
     <>
       <i
@@ -14,6 +21,16 @@ export default function Index() {
       <h3 style={{ display: 'inline-block' }}>推荐文章</h3>
     </>
   )
+
+  const [articles, setArticles] = useState([])
+
+  useEffect(() => { 
+    getArticles()
+    // setArticles(articles)
+
+  },[])  
+ 
+  
   return (
     <>
       <Header></Header>
@@ -30,9 +47,11 @@ export default function Index() {
         <div className="main">
           <div className="article-card">
             <ArticlesCard title={title}>
-              <ArticlesItem style={{ padding: '20px', marginBottom: '10px' }} />
-              <ArticlesItem style={{ padding: '20px', marginBottom: '10px' }} />
-              <ArticlesItem style={{ padding: '20px', marginBottom: '10px' }} />
+              {
+                articles.map(article => (
+                  <ArticlesItem key={article.id} article={article} style={{ padding: '20px', marginBottom: '10px' }}/>
+                ))
+              }
             </ArticlesCard>
           </div>
           <div className="other-info">

@@ -4,10 +4,9 @@ import { Button, ColorPicker, Input } from 'antd'
 const { Search } = Input
 
 export default function Header(options) {
-  
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      console.log(window.pageYOffset, 'sdjflsdkjf')
       if (window.pageYOffset >= 200) {
         document.querySelector('.header').classList.add('active')
       } else {

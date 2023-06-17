@@ -1,23 +1,23 @@
 import { Divider, Space, Tag } from 'antd'
-export default function ArticlesItem(options) {
+export default function ArticlesItem({article,style}) {
   return (
     <>
-      <div style={options.style} className="articles-item">
+      <div style={style} className="articles-item">
         <div className="cover">
-          <img src="/imgs/adv.png" alt="" />
+          <img src={article.img} alt="" />
         </div>
         <div className="info">
           <div className="title">
-            <span>分类</span>
-            <h4>这里是标题</h4>
+            <span>{article.category.name}</span>
+            <h4>{article.title}</h4>
           </div>
           <div className="tags">
-            <Tag color="blue">blue</Tag>
-            <Tag color="blue">blue</Tag>
-            <Tag color="blue">blue</Tag>
+            <Tag color="blue">{article.category.name}</Tag>
+            {/* <Tag color="blue">blue</Tag>
+            <Tag color="blue">blue</Tag> */}
           </div>
           <div className="description ant-typography ant-typography-ellipsis ant-typography-ellipsis-multiple-line css-1a94xbs">
-            <p>这里是文章的描述，字数多。固定高度，超出省略号 多行文本</p>
+            <p>{article.description}</p>
           </div>
           <div className="data">
             <span>2022-09-01 07:12 |</span>
@@ -78,7 +78,8 @@ export default function ArticlesItem(options) {
           color: var(--text-color-light);
           font-size: 14px;
           margin-bottom: 10px;
-          height:44px
+          height:44px;
+          flex: 1;
         }
         .data{
           color: var(--text-color-light);

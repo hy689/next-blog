@@ -1,6 +1,5 @@
 import axios from "axios";
-import qs from "qs";
-import { serverConfig } from "../config";
+import serverConfig  from "./config.js";
 //创建axios实例
 const $http = axios.create({
   baseURL: serverConfig.baseURL,
@@ -9,22 +8,25 @@ const $http = axios.create({
 //请求拦截
 $http.interceptors.request.use(
   (config) => {
+
     // console.log("请求配置", config);
     //业务逻辑
     //设置token
     if (serverConfig.useTokenAuthorization) {
       config.headers["Authorization"] = localStorage.getItem("token");
     }
-    //设置请求头
-    if (!config.headers["content-type"]) {
-      if (config.method === "post") {
-        config.headers["content-type"] = "application/x-www-form/urlencoded"; //post请求
-        // config.data=JSON.stringify(config.data);//表序列化,表单数据发送服务器需要序列化
-        config.data = qs.stringify(config.data); //表序列化,表单数据发送服务器需要序列化
-      } else {
-        config.headers["content-type"] = "application/json";
-      }
-    }
+    // config.headers["content-type"] = "application/json";
+    // // //设置请求头
+    // if (!config.headers["content-type"]) {
+    //   if (config.method === "post") {
+    //     config.headers["content-type"] = "application/x-www-form/urlencoded"; //post请求
+    //     // config.data=JSON.stringify(config.data);//表序列化,表单数据发送服务器需要序列化
+    //     config.data = qs.stringify(config.data); //表序列化,表单数据发送服务器需要序列化
+    //   } else {
+    //     config.headers["content-type"] = "application/json";
+    //   }
+    // }
+    return config
   },
   (error) => {
     Promise.reject(error);
