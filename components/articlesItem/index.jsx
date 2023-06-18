@@ -1,8 +1,9 @@
 import { Divider, Space, Tag } from 'antd'
-export default function ArticlesItem({article,style}) {
+import ts2Date from '@/utils/timeStampToDate'
+export default function ArticlesItem({article,style,goDetail}) {
   return (
     <>
-      <div style={style} className="articles-item">
+      <div onClick={()=>goDetail(article.id)} style={style} className="articles-item">
         <div className="cover">
           <img src={article.img} alt="" />
         </div>
@@ -20,10 +21,11 @@ export default function ArticlesItem({article,style}) {
             <p>{article.description}</p>
           </div>
           <div className="data">
-            <span>2022-09-01 07:12 |</span>
+            <span>{ts2Date(article.created)} </span>
+            {/* <span style={{margin:'0 5px'}}>|</span>
             <span>
               <i className="iconfont icon-shuju"></i>200 
-            </span>
+            </span> */}
           </div>
         </div>
       </div>
@@ -31,6 +33,7 @@ export default function ArticlesItem({article,style}) {
         .articles-item {
           display: flex;
           align-items: center;
+          cursor: pointer;
         }
         .cover {
           height: 165px;
@@ -43,6 +46,7 @@ export default function ArticlesItem({article,style}) {
           width: 100%;
         }
         .info {
+          flex:1;
           height: 100%;
         }
         .title {
@@ -55,7 +59,7 @@ export default function ArticlesItem({article,style}) {
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 34px;
+          padding: 0 5px;
           color: #fff;
           height: 21px;
           margin-right: 10px;
