@@ -1,16 +1,18 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import ArticlesCard from '@/components/articlesCard'
 import ArticlesItem from '@/components/articlesItem'
-import Header from '@/components/header/index'
+import Header from '@/pages/header/index'
 import Advert from './index/advert'
 import CarouselBanner from './index/carouselBanner'
 import { apiArticleGetAll } from '@/api/articles'
+import handleError from '@/utils/handleError'
 
 export default function Index() {
-  const getArticles = async () => {
-    const res = await apiArticleGetAll()
-    setArticles(res.data)
-  }
+  const [articles, setArticles] = useState([])
+
+  useEffect(() => {
+    getArticles()
+  }, [])
 
   const title = (
     <>
@@ -22,15 +24,15 @@ export default function Index() {
     </>
   )
 
-  const [articles, setArticles] = useState([])
+  const getArticles = async () => {
+    const [err, r] = await apiArticleGetAll()
+    if (err) {
+      handleError(err)
+      return
+    }
+    setArticles(r.data)
+  }
 
-  useEffect(() => { 
-    getArticles()
-    // setArticles(articles)
-
-  },[])  
- 
-  
   return (
     <>
       <Header></Header>
@@ -47,11 +49,13 @@ export default function Index() {
         <div className="main">
           <div className="article-card">
             <ArticlesCard title={title}>
-              {
-                articles.map(article => (
-                  <ArticlesItem key={article.id} article={article} style={{ padding: '20px', marginBottom: '10px' }}/>
-                ))
-              }
+              {articles.map((article) => (
+                <ArticlesItem
+                  key={article.id}
+                  article={article}
+                  style={{ padding: '20px', marginBottom: '10px' }}
+                />
+              ))}
             </ArticlesCard>
           </div>
           <div className="other-info">

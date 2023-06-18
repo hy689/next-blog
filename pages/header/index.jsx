@@ -1,9 +1,16 @@
 // import styles from './header.module.css'
-import { useEffect } from 'react'
-import { Button, ColorPicker, Input } from 'antd'
+import { useEffect,useState } from 'react'
+import { apiCategoryGetAll } from '@/api/articles'
+import {  Input } from 'antd'
+import handleError from '@/utils/handleError'
 const { Search } = Input
 
-export default function Header(options) {
+export default function Header() {
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    getCategories()
+  },[])
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -18,6 +25,19 @@ export default function Header(options) {
       window.removeEventListener('scroll', () => {})
     }
   }, [])
+
+  const getCategories = async () => {
+    const [err,r ] = await apiCategoryGetAll()
+    if(err){
+      handleError(err)
+      return
+    }
+    setCategories(r.data)
+  }
+
+  const login = ()=>{
+    handleError({message:'不好意思哦，暂未开放登录~'})
+  }
 
   return (
     <>
@@ -44,30 +64,21 @@ export default function Header(options) {
             {/* <ColorPicker /> */}
             {/* 分类 */}
             <div className="category">
-              <span className="category-item">
-                <i
-                  className="iconfont icon-aiqing"
-                  style={{ color: '#3e8bf8' }}
-                ></i>
-                <span>前端</span>
-              </span>
-              <span className="category-item">
-                <i
-                  className="iconfont icon-tongqian"
-                  style={{ color: '#a5adf6' }}
-                ></i>
-                <span>go语言</span>
-              </span>
-              <span className="category-item">
-                <i
-                  className="iconfont icon-chushi"
-                  style={{ color: '#ffd05c' }}
-                ></i>
-                <span>开发经验</span>
-              </span>
+              {
+                categories.map(category=>(
+                  <span className="category-item">
+                  <i
+                    className={`iconfont ${category.icon}`}
+                    style={{ color: category.iconColor }}
+                  ></i>
+                  <span>{category.name}</span>
+                </span>
+                ))
+              }
+             
             </div>
             {/* 登录按钮 */}
-            <div className="login">登录</div>
+            <div className="login" onClick={login}>登录</div>
           </div>
         </div>
       </div>

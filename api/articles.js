@@ -1,11 +1,5 @@
 import $http from "./index";
-export const getUserInfo = (params) => {
-  return $http({
-    methods: "get",
-    url: "/user/userInfo",
-    params,
-  });
-};
+
 
 export const apiArticleGetAll = (params) => {
   return $http({
@@ -15,11 +9,12 @@ export const apiArticleGetAll = (params) => {
   });
 }
 
-export const login = (data) => {
+export const apiCategoryGetAll = (params) => {
   return $http({
-    methods: "post",
-    url: "/user/login",
-    data,
+    methods: "get",
+    url: "/category/getAll",
+    params,
   });
-};
+}
+
 
