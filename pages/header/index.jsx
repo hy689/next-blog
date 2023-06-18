@@ -15,9 +15,9 @@ export default function Header() {
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.pageYOffset >= 200) {
-        document.querySelector('.header').classList.add('active')
+        document.querySelector('.header')?.classList.add('active')
       } else {
-        document.querySelector('.header').classList.remove('active')
+        document.querySelector('.header')?.classList.remove('active')
       }
     })
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+
 import ArticlesCard from '@/components/articlesCard'
 import ArticlesItem from '@/components/articlesItem'
 import Header from '@/pages/header/index'
@@ -6,9 +7,12 @@ import Advert from './index/advert'
 import CarouselBanner from './index/carouselBanner'
 import { apiArticleGetAll } from '@/api/articles'
 import handleError from '@/utils/handleError'
+import { useRouter } from 'next/router'
 
 export default function Index() {
   const [articles, setArticles] = useState([])
+
+  const router = useRouter()
 
   useEffect(() => {
     getArticles()
@@ -33,6 +37,10 @@ export default function Index() {
     setArticles(r.data)
   }
 
+  const goDetail = (id) => {
+    router.push(`/article/${id}`)
+  }
+
   return (
     <>
       <Header></Header>
@@ -54,6 +62,7 @@ export default function Index() {
                   key={article.id}
                   article={article}
                   style={{ padding: '20px', marginBottom: '10px' }}
+                  goDetail={goDetail}
                 />
               ))}
             </ArticlesCard>
