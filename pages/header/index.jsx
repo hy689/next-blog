@@ -88,7 +88,7 @@ export default function Header() {
             height: 46px;
             position: sticky;
             top: 200px;
-            z-index: 99999;
+            z-index: 999;
             top: 0;
           }
           .logo {

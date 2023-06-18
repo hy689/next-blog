@@ -57,7 +57,7 @@ export default function CarouselBanner(options) {
           font-size: 14px;
           padding: 0 10px;
           font-weight: 700;
-          z-index: 999;
+          z-index: 998;
         }
         .hot img {
           height: 180px;
