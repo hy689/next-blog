@@ -18,6 +18,7 @@ export default function ArticlesCard(options) {
         .card-content{
           background: #fff;
           height:100x;
+          padding: 20px
         }
       `}</style>
     </>

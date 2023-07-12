@@ -18,12 +18,12 @@ export default function Index() {
   }, [])
 
   useEffect(() => {
-    console.log(document.querySelector('.header'),"document.querySelector('.header')")
     document.querySelector('.header')?.classList.add('active')
+
     window.addEventListener('scroll', () => {
       if (window.pageYOffset >= 200) {
         document.querySelector('.header')?.classList.remove('active')
-      }else{
+      } else {
         document.querySelector('.header')?.classList.add('active')
       }
     })
@@ -122,7 +122,7 @@ export default function Index() {
         .active {
           background: none !important;
           transition: all;
-          box-shadow: none!important;
+          box-shadow: none !important;
         }
         .active .category {
           color: #fff !important;
