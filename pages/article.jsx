@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import Markdown from '../../components/article/markdown'
-import Header from '../header/index'
+import Markdown from '../components/article/markdown'
+import Header from './header/index'
 
 import { apiArticleDetail } from '@/api/articles'
 import handleError from '@/utils/handleError'
