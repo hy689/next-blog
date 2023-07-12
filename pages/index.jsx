@@ -3,15 +3,14 @@ import React, { useState, useEffect } from 'react'
 import ArticlesCard from '@/components/articlesCard'
 import ArticlesItem from '@/components/articlesItem'
 import Header from '@/pages/header/index'
-import Advert from './advert'
-import CarouselBanner from '../../components/index/carouselBanner'
+import Advert from '@/components/index/advert'
+import CarouselBanner from '../components/index/carouselBanner'
 import { apiArticleGetAll } from '@/api/articles'
 import handleError from '@/utils/handleError'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 
 export default function Index() {
   const [articles, setArticles] = useState([])
-  const router = useRouter()
 
   useEffect(() => {
     getArticles()
@@ -43,7 +42,7 @@ export default function Index() {
   }
 
   const goDetail = (id) => {
-    router.push(`/article/${id}`)
+    Router.push({pathname:'/article',query:{id}})
   }
 
   const title = (
