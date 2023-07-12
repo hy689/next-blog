@@ -42,7 +42,7 @@ export default function Index() {
   }
 
   const goDetail = (id) => {
-    Router.push({pathname:'/article',query:{id}})
+    Router.push(`/article/${id}`)
   }
 
   const title = (
