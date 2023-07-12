@@ -1,8 +1,34 @@
-import React from 'react'
-import Markdown from './components/markdown'
+import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+
+import Markdown from '../../components/article/markdown'
 import Header from '../header/index'
+
+import { apiArticleDetail } from '@/api/articles'
+import handleError from '@/utils/handleError'
+
 const markdown = `### 标题`
 export default function Article() {
+  const router = useRouter()
+  const [article,setArticle] = useState({content:''})
+
+  useEffect(() => {
+    articleDetail()
+  }, [])
+
+  const articleDetail = async () => {
+    const id = router.query.id
+    const [err, r] = await apiArticleDetail({id})
+
+    if (err) {
+      handleError(err)
+      return
+    }
+
+    setArticle(r.data)
+
+  }
+
   return (
     <>
       <Header
@@ -11,7 +37,10 @@ export default function Article() {
           boxShadow: '0 1px 4px rgba(89,90,89,.28)',
         }}
       ></Header>
-      <Markdown markdown={markdown} />
+      <div>
+
+      </div>
+      <Markdown markdown={article.content} />
     </>
   )
 }

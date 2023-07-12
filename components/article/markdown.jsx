@@ -11,7 +11,8 @@ export default function Markdown({markdown}) {
         children={markdown}
         components={{
           code({ node, inline, className, children, ...props }) {
-            return !inline && match ? (
+            console.log( node, inline, className, children)
+            return !inline  ? (
               <SyntaxHighlighter
                 children={String(children).replace(/\n$/, '')}
                 style={atomDark}

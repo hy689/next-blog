@@ -17,4 +17,12 @@ export const apiCategoryGetAll = (params) => {
   });
 }
 
+export const apiArticleDetail = (params) => {
+  return $http({
+    methods: "get",
+    url: "/article/getById",
+    params,
+  });
+}
+
 
