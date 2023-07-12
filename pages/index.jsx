@@ -11,22 +11,27 @@ import { useRouter } from 'next/router'
 
 export default function Index() {
   const [articles, setArticles] = useState([])
-
   const router = useRouter()
 
   useEffect(() => {
     getArticles()
   }, [])
 
-  const title = (
-    <>
-      <i
-        style={{ color: '#3e8bf8', marginRight: '10px' }}
-        className="iconfont icon-jianzhu"
-      ></i>
-      <h3 style={{ display: 'inline-block' }}>推荐文章</h3>
-    </>
-  )
+  useEffect(() => {
+    console.log(document.querySelector('.header'),"document.querySelector('.header')")
+    document.querySelector('.header')?.classList.add('active')
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset >= 200) {
+        document.querySelector('.header')?.classList.remove('active')
+      }else{
+        document.querySelector('.header')?.classList.add('active')
+      }
+    })
+
+    return () => {
+      window.removeEventListener('scroll', () => {})
+    }
+  }, [])
 
   const getArticles = async () => {
     const [err, r] = await apiArticleGetAll()
@@ -40,6 +45,16 @@ export default function Index() {
   const goDetail = (id) => {
     router.push(`/article/${id}`)
   }
+
+  const title = (
+    <>
+      <i
+        style={{ color: '#3e8bf8', marginRight: '10px' }}
+        className="iconfont icon-jianzhu"
+      ></i>
+      <h3 style={{ display: 'inline-block' }}>推荐文章</h3>
+    </>
+  )
 
   return (
     <>
@@ -103,6 +118,14 @@ export default function Index() {
         .advert {
           width: 100%;
           height: 338px;
+        }
+        .active {
+          background: none !important;
+          transition: all;
+          box-shadow: none!important;
+        }
+        .active .category {
+          color: #fff !important;
         }
       `}</style>
     </>

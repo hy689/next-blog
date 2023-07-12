@@ -1,47 +1,33 @@
 // import styles from './header.module.css'
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import { apiCategoryGetAll } from '@/api/articles'
-import {  Input } from 'antd'
+import { Input } from 'antd'
 import handleError from '@/utils/handleError'
 const { Search } = Input
 
-export default function Header() {
+export default function Header({ styles }) {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
     getCategories()
-  },[])
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset >= 200) {
-        document.querySelector('.header')?.classList.add('active')
-      } else {
-        document.querySelector('.header')?.classList.remove('active')
-      }
-    })
-
-    return () => {
-      window.removeEventListener('scroll', () => {})
-    }
   }, [])
 
   const getCategories = async () => {
-    const [err,r ] = await apiCategoryGetAll()
-    if(err){
+    const [err, r] = await apiCategoryGetAll()
+    if (err) {
       handleError(err)
       return
     }
     setCategories(r.data)
   }
 
-  const login = ()=>{
-    handleError({message:'不好意思哦，暂未开放登录~'})
+  const login = () => {
+    handleError({ message: '不好意思哦，暂未开放登录~' })
   }
 
   return (
     <>
-      <div className="header">
+      <div style={styles} className="header">
         <div
           style={{
             width: '1200px',
@@ -49,7 +35,7 @@ export default function Header() {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            height:'100%'
+            height: '100%',
           }}
         >
           <div className="logo">
@@ -64,21 +50,20 @@ export default function Header() {
             {/* <ColorPicker /> */}
             {/* 分类 */}
             <div className="category">
-              {
-                categories.map(category=>(
-                  <span className="category-item">
+              {categories.map((category) => (
+                <span className="category-item">
                   <i
                     className={`iconfont ${category.icon}`}
                     style={{ color: category.iconColor }}
                   ></i>
                   <span>{category.name}</span>
                 </span>
-                ))
-              }
-             
+              ))}
             </div>
             {/* 登录按钮 */}
-            <div className="login" onClick={login}>登录</div>
+            <div className="login" onClick={login}>
+              登录
+            </div>
           </div>
         </div>
       </div>
@@ -90,6 +75,9 @@ export default function Header() {
             top: 200px;
             z-index: 999;
             top: 0;
+            background: #fff ;
+            transition: all;
+            box-shadow: 0 1px 4px rgba(89, 90, 89, 0.28);
           }
           .logo {
             width: 36px;
@@ -100,9 +88,9 @@ export default function Header() {
             height: 100%;
           }
           .category {
-            color: #fff;
             display: flex;
             align-items: center;
+            color: var(--text-color-deep) ;
           }
           .category-item {
             padding: 0 20px;
@@ -134,13 +122,13 @@ export default function Header() {
             text-align: center;
             cursor: pointer;
           }
-          .active{
-            background: #fff !important;
+          .active {
+            background: none !important;
             transition: all;
-            box-shadow: 0 1px 4px rgba(89,90,89,.28);
+            box-shadow: none;
           }
-          .active .category{
-            color: var(--text-color-deep) !important;
+          .active .category {
+            color: #fff !important;
           }
         `}
       </style>
