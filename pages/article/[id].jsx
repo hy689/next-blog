@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import Markdown from '../components/article/markdown'
-import Header from './header/index'
+import Markdown from '../../components/article/markdown'
+import Header from '../header/index'
 
 import { apiArticleDetail } from '@/api/articles'
 import handleError from '@/utils/handleError'
 
-const markdown = `### 标题`
 export default function Article(a) {
   const router = useRouter()
   
@@ -17,13 +16,8 @@ export default function Article(a) {
     articleDetail()
   }, [])
 
-  Article.getInitialProps = async () => {
-    return {};
-  };
-
   const articleDetail = async () => {
     const id = router.query.id
-    console.log(router,'aaaaaaaaaaa',a)
     const [err, r] = await apiArticleDetail({id})
 
     if (err) {
